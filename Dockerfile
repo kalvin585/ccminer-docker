@@ -19,7 +19,7 @@ RUN echo 'APT::Install-Recommends "false";' > /etc/apt/apt.conf.d/zzz-no-recomme
     libssl-dev libcurl4-openssl-dev libjansson-dev \
     libcurl3 libjansson4 libssl1.1 \
  && git clone https://github.com/KlausT/ccminer \
- && cd ccminer && sed -i 's|-march=native|-march=native -std=gnu++11|' configure.sh \
+ && cd ccminer && sed -i 's|-march=native|-std=gnu++11|' configure.sh \
  && ./build.sh && strip ./ccminer && chmod +x ./ccminer && mv ./ccminer /usr/local/bin/ccminer \
  && apt-get remove --purge --auto-remove -y \
     git ca-certificates build-essential automake autotools-dev \
