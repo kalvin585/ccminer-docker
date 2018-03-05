@@ -1,5 +1,5 @@
 # ccminer-docker
-The repository contains Dockerfile for KlausT/ccminer build
+The repository contains Dockerfile for tpruvot/ccminer build
 
 Usage: nvidia-docker run kalvin585/ccminer --url xxxx --user xxxx --pass xxxx
 
