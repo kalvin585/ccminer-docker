@@ -23,19 +23,19 @@ RUN dpkg -i /tmp/*.deb \
     cuda-nvml-dev-$CUDA_PKG_VERSION \
     cuda-minimal-build-$CUDA_PKG_VERSION \
     cuda-command-line-tools-$CUDA_PKG_VERSION \
-    git ca-certificates build-essential automake autotools-dev \
+    ca-certificates build-essential automake autotools-dev \
     libssl-dev libcurl4-openssl-dev libjansson-dev \
-    libcurl3 libjansson4 libgomp1 \
- && git clone https://github.com/tpruvot/ccminer \
- && cd ccminer && sed -i 's|-march=native ||' configure.sh && sed -i 's|CXXFLAGS="-O3 |CXXFLAGS="-Ofast |' configure.sh \
+    libcurl3 libjansson4 libgomp1 wget unzip \
+ && wget https://github.com/tpruvot/ccminer/archive/linux.zip && unzip -a linux.zip \
+ && cd ccminer-linux && sed -i 's|-march=native ||' configure.sh && sed -i 's|CXXFLAGS="-O3 |CXXFLAGS="-Ofast |' configure.sh \
  && ./build.sh && strip -s ./ccminer && chmod +x ./ccminer && mv ./ccminer /usr/local/bin/ccminer \
  && apt-get remove --purge --auto-remove -y \
     cuda-libraries-dev-$CUDA_PKG_VERSION \
     cuda-nvml-dev-$CUDA_PKG_VERSION \
     cuda-minimal-build-$CUDA_PKG_VERSION \
     cuda-command-line-tools-$CUDA_PKG_VERSION \
-    git ca-certificates build-essential automake autotools-dev \
-    libssl-dev libcurl4-openssl-dev libjansson-dev \
+    ca-certificates build-essential automake autotools-dev \
+    libssl-dev libcurl4-openssl-dev libjansson-dev wget unzip \
  && rm -rf /tmp/* /var/lib/apt/lists/* /etc/apt/apt.conf.d/zzz-no-recommends \
  && apt-get clean -y
 
